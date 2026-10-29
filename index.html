@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="אינפי 1, בועז צבאן — חסמים; סדרות והתכנסות; חשבון גבולות; סדרות מונוטוניות ואי-שיויונים; התכנסות במובן הרחב; תת-סדרות וגבולות חלקיים; הגבול העליון והתחתון; קריאה/צפיה עצמית: חזקות ממשיות; המספר e; משפט שטולץ; טורים; מבחני התכנסות של טורים חיוביים; מבחן העיבוי להתכנסות טור מונוטוני; טורים כלליים; משפט רימן; קריאה עצמית: מכפלת טורים וסכומים כפולים; גבול של פונקציה (בלשון הסדרות); גבול של פונקציה, לפי סביבות; גבולות חד-צדדיים בנקודה ממשית; רציפות פונקציות; פונקציות רציפות בקטע סגור; נגזרות ; משפטים יסודיים לגבי נגזרות; כלל לופיטל. תקציר הקורס עם נוסחאות מתמטיות וגודל גופן לבחירה.">
-  <meta name="source-sha256" content="ebed3e08531835958d575651d3597fca59a45d979c119b261602de5a8f01458a">
+  <meta name="source-sha256" content="2836525ba68ef4dd45f27e624c444a0f1a2604f3c96a61979781504bf2efa9b2">
   <title>אינפי 1 — תקציר הקורס: פרקים 1–24 | בועז צבאן</title>
   <style>
     :root { --reading-size: 20px; color-scheme: light; }
@@ -98,6 +98,12 @@
       main { padding: 0; border: 0; }
       h2, h3 { break-after: avoid; }
     }
+
+    .math[data-flowchart] { position: relative; }
+    .math[data-flowchart] mjx-container { overflow: visible !important; }
+    .math[data-flowchart] mjx-container { position: relative; z-index: 1; }
+    .math[data-flowchart] [class*="xy-label-"] { background: white; }
+    .flowchart-arrows { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
   </style>
   <script>
     window.MathJax = {
@@ -106,6 +112,10 @@
       output: {
         displayOverflow: 'linebreak', linebreaks: { inline: true, width: '90%' },
         preFilters: [({math}) => {
+          if (math.math.includes("\\class{xy-node-")) {
+            math.root.attributes.set("overflow", "overflow");
+            math.root.walkTree(node => { if (node.kind === "mtable") node.attributes.set("width", "40em"); });
+          }
           if (math.math.includes("\\begin{array}{ccccc}")) {
             math.root.attributes.set("overflow", "scale");
             math.root.walkTree(node => { if (node.kind === "mtable") node.attributes.set("width", "15em"); });
@@ -1980,7 +1990,7 @@ a_{n} &amp; \xrightarrow[n\to\infty]{}a
 </div>
 </div>
 </div></details></li>
-<li id="c9-s1-4"><details class="proof" id="proof-c9-s1-4"><summary class="proof-trigger" title="לחצו לפתיחה או לסגירה"><span class="statement">תכונות ידועות: <span class="math inline" data-origin="outline" dir="ltr">\(e\)</span> מספר אי-רציונלי (נוכיח באינפי <bdi dir="ltr">2</bdi>), ואף אינו שורש של שום פולינום שאינו אפס ובעל מקדמים רציונליים (לא נוכיח).</span></summary><div class="proof-body" data-kind="preview">
+<li id="c9-s1-4"><details class="proof" id="proof-c9-s1-4"><summary class="proof-trigger" title="לחצו לפתיחה או לסגירה"><span class="statement">תכונות ידועות: <span class="math inline" data-origin="outline" dir="ltr">\(e\)</span> מספר אי-רציונלי (נוכיח באינפי <bdi dir="ltr">2</bdi>), ואף אינו שורש של פולינום שונה מאפס עם מקדמים רציונלים (לא נוכיח).</span></summary><div class="proof-body" data-kind="preview">
 <div class="proof-step"><div class="step-line"><span class="step-text">האי־רציונליות והטרנסצנדנטיות הן תוצאות שמוזכרות כאן ללא הוכחה, כפי שנאמר במקור. הן אינן דרושות לטענות ההמשך בפרק: אלה יסתמכו על הגדרת <span class="math inline" data-origin="proof" dir="ltr">\(e\)</span>, החסמים שלה וחוקי החזקות שכבר הוכחו.</span>
 </div>
 </div>
@@ -3138,15 +3148,20 @@ a_{1}b+a_{2}b+\cdots+a_{n-1}b &amp; \longrightarrow &amp; ab
 </div>
 </div>
 </div></details></li>
-<li id="c18-s1-4"><details class="proof" id="proof-c18-s1-4"><summary class="proof-trigger" title="לחצו לפתיחה או לסגירה"><span class="statement">המקרים האפשריים: <span class="math inline" data-origin="outline" dir="ltr">\(\lu f(x)=b\)</span> <span class="math inline" data-origin="outline" dir="ltr">\(\Longleftrightarrow\)</span><span class="math display" data-origin="outline" data-display-tex="\[\begin{array}{c}
-\mbox{לכל~סביבה~של}\\ b\\
-b=-\infty:\\ (-\infty,c)\\ b=\infty:\\ (c,\infty)\\ b\in\mathbb R:\\ (b-\epsilon,b+\epsilon)\\
-\Downarrow\\
-\mbox{יש~סביבה}\\\mbox{מנוקבת~של}\\ a\\
-a=-\infty:\\ (-\infty,d)\\ a=\infty:\\ (d,\infty)\\ a\in\mathbb R:\\ (a-\delta,a+\delta)\setminus\{a\}\\
-\Downarrow\\
-\mbox{כך~שערך}\\\mbox{הפונקציה}\\ f(x)\\\mbox{שייך~לסביבה~של}\\b\\\mbox{לכל~נקודה}\\x\\\mbox{בסביבה}\\\mbox{המנוקבת~של}\\a
-\end{array}\]" dir="ltr">\[\xymatrix{ &amp; \text{לכל סביבה של \ensuremath{b}}\ar[dl]_{b=-\infty}\ar[d]^{b=\infty}\ar[dr]^{-\infty&lt;b&lt;\infty}\\
+<li id="c18-s1-4"><details class="proof" id="proof-c18-s1-4"><summary class="proof-trigger" title="לחצו לפתיחה או לסגירה"><span class="statement">המקרים האפשריים: <span class="math inline" data-origin="outline" dir="ltr">\(\lu f(x)=b\)</span> <span class="math inline" data-origin="outline" dir="ltr">\(\Longleftrightarrow\)</span><span class="math display" data-origin="outline" data-display-tex="\[\begin{array}{c@{\;}c@{\;}c@{\;}c@{\;}c}
+ &amp;  &amp; \class{xy-node-0-1}{b\ \mbox{לכל~סביבה~של}} &amp;  &amp; \\[.25em]
+ &amp; \class{xy-label-0-0}{\scriptstyle b=-\infty} &amp; \class{xy-label-0-1}{\scriptstyle b=\infty} &amp; \class{xy-label-0-2}{\scriptstyle -\infty&lt;b&lt;\infty} &amp; \\[.5em]
+\class{xy-node-1-0}{(-\infty,c)} &amp;  &amp; \class{xy-node-1-1}{(c,\infty)} &amp;  &amp; \class{xy-node-1-2}{(b-\epsilon,b+\epsilon)}\\[1.6em]
+ &amp;  &amp; \class{xy-node-2-1}{a\ \mbox{יש~סביבה~מנוקבת~של}} &amp;  &amp; \\[.25em]
+ &amp; \class{xy-label-2-0}{\scriptstyle a=-\infty} &amp; \class{xy-label-2-1}{\scriptstyle a=\infty} &amp; \class{xy-label-2-2}{\scriptstyle -\infty&lt;a&lt;\infty} &amp; \\[.5em]
+\class{xy-node-3-0}{(-\infty,d)} &amp;  &amp; \class{xy-node-3-1}{(d,\infty)} &amp;  &amp; \class{xy-node-3-2}{(a-\delta,a+\delta)\setminus\{a\}}\\[1.6em]
+ &amp;  &amp; \class{xy-node-4-1}{\mbox{כך~ש}} &amp;  &amp; \\[.25em]
+ &amp; \class{xy-label-4-0}{\scriptstyle b=-\infty} &amp; \class{xy-label-4-1}{\scriptstyle b=\infty} &amp; \class{xy-label-4-2}{\scriptstyle -\infty&lt;b&lt;\infty} &amp; \\[.5em]
+\class{xy-node-5-0}{f(x)\in(-\infty,c)} &amp;  &amp; \class{xy-node-5-1}{f(x)\in(c,\infty)} &amp;  &amp; \class{xy-node-5-2}{f(x)\in(b-\epsilon,b+\epsilon)}\\[1.6em]
+ &amp;  &amp; \class{xy-node-6-1}{\mbox{כך~ש}\ x\ \mbox{לכל}} &amp;  &amp; \\[.25em]
+ &amp; \class{xy-label-6-0}{\scriptstyle a=-\infty} &amp; \class{xy-label-6-1}{\scriptstyle a=\infty} &amp; \class{xy-label-6-2}{\scriptstyle -\infty&lt;a&lt;\infty} &amp; \\[.5em]
+\class{xy-node-7-0}{x\in(-\infty,d)} &amp;  &amp; \class{xy-node-7-1}{x\in(d,\infty)} &amp;  &amp; \class{xy-node-7-2}{x\in(a-\delta,a+\delta)\setminus\{a\}}
+\end{array}\]" data-flowchart="[{&quot;from&quot;: &quot;0-1&quot;, &quot;to&quot;: &quot;1-0&quot;, &quot;label&quot;: &quot;0-0&quot;}, {&quot;from&quot;: &quot;0-1&quot;, &quot;to&quot;: &quot;1-1&quot;, &quot;label&quot;: &quot;0-1&quot;}, {&quot;from&quot;: &quot;0-1&quot;, &quot;to&quot;: &quot;1-2&quot;, &quot;label&quot;: &quot;0-2&quot;}, {&quot;from&quot;: &quot;1-0&quot;, &quot;to&quot;: &quot;2-1&quot;}, {&quot;from&quot;: &quot;1-1&quot;, &quot;to&quot;: &quot;2-1&quot;}, {&quot;from&quot;: &quot;1-2&quot;, &quot;to&quot;: &quot;2-1&quot;}, {&quot;from&quot;: &quot;2-1&quot;, &quot;to&quot;: &quot;3-0&quot;, &quot;label&quot;: &quot;2-0&quot;}, {&quot;from&quot;: &quot;2-1&quot;, &quot;to&quot;: &quot;3-1&quot;, &quot;label&quot;: &quot;2-1&quot;}, {&quot;from&quot;: &quot;2-1&quot;, &quot;to&quot;: &quot;3-2&quot;, &quot;label&quot;: &quot;2-2&quot;}, {&quot;from&quot;: &quot;3-0&quot;, &quot;to&quot;: &quot;4-1&quot;}, {&quot;from&quot;: &quot;3-1&quot;, &quot;to&quot;: &quot;4-1&quot;}, {&quot;from&quot;: &quot;3-2&quot;, &quot;to&quot;: &quot;4-1&quot;}, {&quot;from&quot;: &quot;4-1&quot;, &quot;to&quot;: &quot;5-0&quot;, &quot;label&quot;: &quot;4-0&quot;}, {&quot;from&quot;: &quot;4-1&quot;, &quot;to&quot;: &quot;5-1&quot;, &quot;label&quot;: &quot;4-1&quot;}, {&quot;from&quot;: &quot;4-1&quot;, &quot;to&quot;: &quot;5-2&quot;, &quot;label&quot;: &quot;4-2&quot;}, {&quot;from&quot;: &quot;5-0&quot;, &quot;to&quot;: &quot;6-1&quot;}, {&quot;from&quot;: &quot;5-1&quot;, &quot;to&quot;: &quot;6-1&quot;}, {&quot;from&quot;: &quot;5-2&quot;, &quot;to&quot;: &quot;6-1&quot;}, {&quot;from&quot;: &quot;6-1&quot;, &quot;to&quot;: &quot;7-0&quot;, &quot;label&quot;: &quot;6-0&quot;}, {&quot;from&quot;: &quot;6-1&quot;, &quot;to&quot;: &quot;7-1&quot;, &quot;label&quot;: &quot;6-1&quot;}, {&quot;from&quot;: &quot;6-1&quot;, &quot;to&quot;: &quot;7-2&quot;, &quot;label&quot;: &quot;6-2&quot;}]" dir="ltr">\[\xymatrix{ &amp; \text{לכל סביבה של \ensuremath{b}}\ar[dl]_{b=-\infty}\ar[d]^{b=\infty}\ar[dr]^{-\infty&lt;b&lt;\infty}\\
 %
 (-\infty,c)\ar[dr] &amp; (c,\infty)\ar[d] &amp; (b-\epsilon,b+\epsilon)\ar[dl]\\
 %
@@ -3164,16 +3179,20 @@ x\in(-\infty,d) &amp; x\in(d,\infty) &amp; x\in(a-\delta,a+\delta)\setminus\{a\}
 </div>
 </div>
 </div></details></li>
-<li id="c18-s1-5"><details class="proof" id="proof-c18-s1-5"><summary class="proof-trigger" title="לחצו לפתיחה או לסגירה"><span class="statement">בניסוח ישיר: <span class="math inline" data-origin="outline" dir="ltr">\(\lim_{x\to a}f(x)=b\)</span> <span class="math inline" data-origin="outline" dir="ltr">\(\Longleftrightarrow\)</span><span class="math display" data-origin="outline" data-display-tex="\[\begin{array}{c}
-b=\pm\infty:\\\mbox{לכל}\\c\in\mathbb R\\ b\in\mathbb R:\\\mbox{לכל}\\\epsilon&gt;0\\
-\Downarrow\\
-a=\pm\infty:\\\mbox{קיים}\\d\in\mathbb R\\ a\in\mathbb R:\\\mbox{קיים}\\\delta&gt;0\\
-\Downarrow\\
- b=-\infty:\\ f(x)&lt;c\\ b=\infty:\\ c&lt;f(x)\\ b\in\mathbb R:\\ |f(x)-b|&lt;\epsilon\\
-\Downarrow\\
-\mbox{לכל~נקודה}\\x\\\mbox{כך~ש}\\
-a=-\infty:\\ x&lt;d\\ a=\infty:\\ d&lt;x\\ a\in\mathbb R:\\ 0&lt;|x-a|&lt;\delta
-\end{array}\]" dir="ltr">\[\xymatrix{ &amp; \text{לכל}\ar[dl]_{b=\pm\infty}\ar[dr]^{-\infty&lt;b&lt;\infty}\\
+<li id="c18-s1-5"><details class="proof" id="proof-c18-s1-5"><summary class="proof-trigger" title="לחצו לפתיחה או לסגירה"><span class="statement">בניסוח ישיר: <span class="math inline" data-origin="outline" dir="ltr">\(\lim_{x\to a}f(x)=b\)</span> <span class="math inline" data-origin="outline" dir="ltr">\(\Longleftrightarrow\)</span><span class="math display" data-origin="outline" data-display-tex="\[\begin{array}{c@{\;}c@{\;}c@{\;}c@{\;}c}
+ &amp;  &amp; \class{xy-node-0-1}{\mbox{לכל}} &amp;  &amp; \\[.25em]
+ &amp; \class{xy-label-0-0}{\scriptstyle b=\pm\infty} &amp;  &amp; \class{xy-label-0-2}{\scriptstyle -\infty&lt;b&lt;\infty} &amp; \\[.5em]
+\class{xy-node-1-0}{c} &amp;  &amp;  &amp;  &amp; \class{xy-node-1-2}{0&lt;\epsilon}\\[1.6em]
+ &amp;  &amp; \class{xy-node-2-1}{\mbox{קיים}} &amp;  &amp; \\[.25em]
+ &amp; \class{xy-label-2-0}{\scriptstyle a=\pm\infty} &amp;  &amp; \class{xy-label-2-2}{\scriptstyle -\infty&lt;a&lt;\infty} &amp; \\[.5em]
+\class{xy-node-3-0}{d} &amp;  &amp;  &amp;  &amp; \class{xy-node-3-2}{0&lt;\delta}\\[1.6em]
+ &amp;  &amp; \class{xy-node-4-1}{\mbox{כך~ש}} &amp;  &amp; \\[.25em]
+ &amp; \class{xy-label-4-0}{\scriptstyle b=-\infty} &amp; \class{xy-label-4-1}{\scriptstyle b=\infty} &amp; \class{xy-label-4-2}{\scriptstyle -\infty&lt;b&lt;\infty} &amp; \\[.5em]
+\class{xy-node-5-0}{f(x)&lt;c} &amp;  &amp; \class{xy-node-5-1}{c&lt;f(x)} &amp;  &amp; \class{xy-node-5-2}{\left|f(x)-b\right|&lt;\epsilon}\\[1.6em]
+ &amp;  &amp; \class{xy-node-6-1}{\mbox{כך~ש}\ x\ \mbox{לכל}} &amp;  &amp; \\[.25em]
+ &amp; \class{xy-label-6-0}{\scriptstyle a=-\infty} &amp; \class{xy-label-6-1}{\scriptstyle a=\infty} &amp; \class{xy-label-6-2}{\scriptstyle -\infty&lt;a&lt;\infty} &amp; \\[.5em]
+\class{xy-node-7-0}{x&lt;d} &amp;  &amp; \class{xy-node-7-1}{d&lt;x} &amp;  &amp; \class{xy-node-7-2}{0&lt;\left|x-a\right|&lt;\delta}
+\end{array}\]" data-flowchart="[{&quot;from&quot;: &quot;0-1&quot;, &quot;to&quot;: &quot;1-0&quot;, &quot;label&quot;: &quot;0-0&quot;}, {&quot;from&quot;: &quot;0-1&quot;, &quot;to&quot;: &quot;1-2&quot;, &quot;label&quot;: &quot;0-2&quot;}, {&quot;from&quot;: &quot;1-0&quot;, &quot;to&quot;: &quot;2-1&quot;}, {&quot;from&quot;: &quot;1-2&quot;, &quot;to&quot;: &quot;2-1&quot;}, {&quot;from&quot;: &quot;2-1&quot;, &quot;to&quot;: &quot;3-0&quot;, &quot;label&quot;: &quot;2-0&quot;}, {&quot;from&quot;: &quot;2-1&quot;, &quot;to&quot;: &quot;3-2&quot;, &quot;label&quot;: &quot;2-2&quot;}, {&quot;from&quot;: &quot;3-0&quot;, &quot;to&quot;: &quot;4-1&quot;}, {&quot;from&quot;: &quot;3-2&quot;, &quot;to&quot;: &quot;4-1&quot;}, {&quot;from&quot;: &quot;4-1&quot;, &quot;to&quot;: &quot;5-0&quot;, &quot;label&quot;: &quot;4-0&quot;}, {&quot;from&quot;: &quot;4-1&quot;, &quot;to&quot;: &quot;5-1&quot;, &quot;label&quot;: &quot;4-1&quot;}, {&quot;from&quot;: &quot;4-1&quot;, &quot;to&quot;: &quot;5-2&quot;, &quot;label&quot;: &quot;4-2&quot;}, {&quot;from&quot;: &quot;5-0&quot;, &quot;to&quot;: &quot;6-1&quot;}, {&quot;from&quot;: &quot;5-1&quot;, &quot;to&quot;: &quot;6-1&quot;}, {&quot;from&quot;: &quot;5-2&quot;, &quot;to&quot;: &quot;6-1&quot;}, {&quot;from&quot;: &quot;6-1&quot;, &quot;to&quot;: &quot;7-0&quot;, &quot;label&quot;: &quot;6-0&quot;}, {&quot;from&quot;: &quot;6-1&quot;, &quot;to&quot;: &quot;7-1&quot;, &quot;label&quot;: &quot;6-1&quot;}, {&quot;from&quot;: &quot;6-1&quot;, &quot;to&quot;: &quot;7-2&quot;, &quot;label&quot;: &quot;6-2&quot;}]" dir="ltr">\[\xymatrix{ &amp; \text{לכל}\ar[dl]_{b=\pm\infty}\ar[dr]^{-\infty&lt;b&lt;\infty}\\
 %
 c\ar[dr] &amp;  &amp; 0&lt;\epsilon\ar[dl]\\
 %
@@ -3592,14 +3611,22 @@ x&lt;d &amp; d&lt;x &amp; 0&lt;\left|x-a\right|&lt;\delta
 </div>
 </div>
 </div></details></li>
-<li id="c21-s5-14"><details class="proof" id="proof-c21-s5-14"><summary class="proof-trigger" title="לחצו לפתיחה או לסגירה"><span class="statement">מסקנה: כל פונקציה אלמנטרית שתחומה איחוד של קטעים מוכללים היא רציפה.</span></summary><div class="proof-body" data-kind="proof">
+<li id="c21-s5-14"><details class="proof" id="proof-c21-s5-14"><summary class="proof-trigger" title="לחצו לפתיחה או לסגירה"><span class="statement">מסקנה: כל פונקציה אלמנטרית המוגדרת בקטע מוכלל, רציפה בו.</span></summary><div class="proof-body" data-kind="proof">
 <div class="proof-step"><div class="step-line"><span class="step-text">הפונקציות הבסיסיות רציפות בתחומי הגדרתן הטבעיים: פולינומים, הפונקציות הטריגונומטריות, מעריכית ולוגריתם. עבור שורש מסדר טבעי, הרציפות בנקודות חיוביות נובעת מרציפות החזקה 8.3.7, והרציפות באפס נובעת מ־8.4.4(ב), עם ערך אפס באפס. בשורש מסדר אי־זוגי, החלפת סימן נותנת גם רציפות בנקודות השליליות ומשמאל לאפס.</span>
 </div>
 </div>
 <div class="proof-step"><div class="step-line"><span class="step-text">לכל סדרה של נקודות בתחום הביטוי השואפת לנקודה בו, נחשב את גבולות תתי־הביטויים לפי סדר בנייתם. חוקי החשבון שומרים את הגבול; בכל מנה המכנה בנקודת היעד אינו אפס. רציפות הפונקציה החיצונית בתחומה שומרת את הגבול בכל הרכבה, גם כאשר ערך הביניים הוא קצה תחום של שורש. באינדוקציה מתקבל שגבול הערכים הוא ערך הביטוי בנקודת היעד.</span>
 </div>
 </div>
-<div class="proof-step"><div class="step-line"><span class="step-text">לכן הפונקציה רציפה בכל קטע מוכלל המוכל בתחומה, עם רציפות מהצד המתאים בקצותיו. אם התחום הוא איחוד של קטעים מוכללים, זו בדיוק רציפות במובן 21.5.12. תנאי התחום נחוץ לניסוח הזה: למשל <span class="math inline" data-origin="proof" dir="ltr">\(\sqrt{-x^2}\)</span> מוגדרת רק ב־<span class="math inline" data-origin="proof" dir="ltr">\(\{0\}\)</span>, שאינה איחוד של קטעים מוכללים לפי 21.5.1.</span>
+<div class="proof-step"><div class="step-line"><span class="step-text">לכן הפונקציה רציפה בכל קטע מוכלל המוכל בתחומה, עם רציפות מהצד המתאים בקצותיו. בפרט היא רציפה בקטע המוכלל שעליו היא מוגדרת, כנדרש.</span>
+</div>
+</div>
+</div></details></li>
+<li id="item-3addcf5a079bede6"><details class="proof" id="proof-item-3addcf5a079bede6"><summary class="proof-trigger" title="לחצו לפתיחה או לסגירה"><span class="statement">דוגמה: הפונקציה <span class="math inline" data-origin="outline" dir="ltr">\(\sqrt{-x^{2}}\)</span> אלמנטרית אך תחום הגדרתה הוא <span class="math inline" data-origin="outline" dir="ltr">\(\left\{ 0\right\} \)</span>, ולכן על פי ההגדרה היא לא רציפה בנקודה <span class="math inline" data-origin="outline" dir="ltr">\(0\)</span>.</span></summary><div class="proof-body" data-kind="explanation">
+<div class="proof-step"><div class="step-line"><span class="step-text">זהו ביטוי אלמנטרי של פולינום ושורש, מהסוג שכבר הופיע ב־21.5.11(ג). השורש הממשי מוגדר בדיוק כאשר <span class="math inline" data-origin="proof" dir="ltr">\(-x^2\ge0\)</span>. מאחר ש־<span class="math inline" data-origin="proof" dir="ltr">\(x^2\ge0\)</span>, התנאי מתקיים בדיוק עבור <span class="math inline" data-origin="proof" dir="ltr">\(x=0\)</span>; לכן תחום ההגדרה הוא <span class="math inline" data-origin="proof" dir="ltr">\(\{0\}\)</span>.</span>
+</div>
+</div>
+<div class="proof-step"><div class="step-line"><span class="step-text">לפי הגדרת הרציפות בנקודה ב־20.1.1, הפונקציה צריכה להיות מוגדרת בסביבה של הנקודה. כל סביבה של אפס מכילה נקודות שונות מאפס, שבהן הביטוי אינו מוגדר. לכן הפונקציה אינה רציפה באפס לפי הגדרת הקורס.</span>
 </div>
 </div>
 </div></details></li>
@@ -4242,6 +4269,52 @@ g(x) &amp; \xrightarrow[x\to a]{}0.
           if (/[\u0590-\u05ff]/.test(el.textContent)) el.setAttribute('dir', 'rtl');
         }));
       }
+      async function drawSourceFlowcharts(elements) {
+        const charts = elements.filter(el => el.dataset.flowchart);
+        if (!charts.length) return;
+        await document.fonts.ready;
+        await new Promise(resolve => requestAnimationFrame(resolve));
+        const ns = 'http://www.w3.org/2000/svg';
+        for (const chart of charts) {
+          chart.querySelector('.flowchart-arrows')?.remove();
+          const frame = chart.getBoundingClientRect();
+          const surfaceWidth = Math.max(chart.clientWidth, chart.scrollWidth);
+          const svg = document.createElementNS(ns, 'svg');
+          svg.classList.add('flowchart-arrows');
+          svg.setAttribute('width', surfaceWidth);
+          svg.setAttribute('height', frame.height);
+          svg.setAttribute('viewBox', `0 0 ${surfaceWidth} ${frame.height}`);
+          svg.setAttribute('aria-hidden', 'true');
+          const color = getComputedStyle(chart).color;
+          const arrowSize = 6;
+          let count = 0;
+          for (const edge of JSON.parse(chart.dataset.flowchart)) {
+            const source = chart.querySelector('.xy-node-' + edge.from);
+            const target = chart.querySelector('.xy-node-' + edge.to);
+            if (!source || !target) throw new Error('Missing source-flowchart node');
+            const a = source.getBoundingClientRect(), b = target.getBoundingClientRect();
+            const dx = (b.left + b.width / 2) - (a.left + a.width / 2);
+            const sign = Math.abs(dx) > 1 ? Math.sign(dx) : 0;
+            const start = [a.left + a.width / 2 + sign * a.width * .25 - frame.left + chart.scrollLeft, a.bottom - frame.top + 3];
+            const end = [b.left + b.width / 2 - sign * b.width * .25 - frame.left + chart.scrollLeft, b.top - frame.top - 4];
+            const length = Math.hypot(end[0] - start[0], end[1] - start[1]);
+            if (length < 1 || end[1] <= start[1]) throw new Error('Overlapping source-flowchart rows');
+            const ux = (end[0] - start[0]) / length, uy = (end[1] - start[1]) / length;
+            const path = document.createElementNS(ns, 'path');
+            path.setAttribute('d', `M ${start} L ${end} M ${end[0]-arrowSize*ux+arrowSize*.45*uy},${end[1]-arrowSize*uy-arrowSize*.45*ux} L ${end} L ${end[0]-arrowSize*ux-arrowSize*.45*uy},${end[1]-arrowSize*uy+arrowSize*.45*ux}`);
+            path.setAttribute('fill', 'none');
+            path.setAttribute('stroke', color);
+            path.setAttribute('stroke-width', '1');
+            path.dataset.from = edge.from;
+            path.dataset.to = edge.to;
+            svg.append(path);
+            count++;
+          }
+          svg.dataset.edges = count;
+          chart.append(svg);
+        }
+      }
+
       function rememberReadingPosition(el) {
         if (el) readingAnchor = {el, top: el.getBoundingClientRect().top};
       }
@@ -4311,6 +4384,7 @@ g(x) &amp; \xrightarrow[x\to a]{}0.
                 await typeset(wide, pass);
                 isolateHebrewMathText(wide);
               }
+              await drawSourceFlowcharts(changed);
               changed.forEach(el => layouts.set(el, layoutKey(el)));
             }
             pass.durationMs = Math.round((performance.now() - started) * 10) / 10;
